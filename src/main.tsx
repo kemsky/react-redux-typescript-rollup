@@ -7,7 +7,7 @@ interface IHelloProps
     framework: string;
 }
 
-const Hello = (props: IHelloProps) => (<h1>Hello from {props.compiler} and {props.framework}!</h1>);
+const Hello = (props: IHelloProps) => (<h1>Hello from {props.compiler} and {props.framework}! And me!</h1>);
 
 ReactDOM.render(
     <Hello compiler='typescript' framework='react'/>,
