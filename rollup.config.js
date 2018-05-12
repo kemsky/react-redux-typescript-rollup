@@ -10,10 +10,10 @@ import uglify from 'rollup-plugin-uglify';
 const development = 'development';
 const production = 'production';
 
-const nodeEnvironment = parseNodeEnv(process.env.NODE_ENV);
+const environment = (process.env.NODE_ENV === production) ? production : development;
 
 const plugins = [
-    replace({'process.env.NODE_ENV': JSON.stringify(nodeEnvironment)}),
+    replace({'process.env.NODE_ENV': JSON.stringify(environment)}),
     nodeResolve(),
     commonjs({
         include: 'node_modules/**',
@@ -26,7 +26,7 @@ const plugins = [
 ];
 
 
-if (nodeEnvironment === development) {
+if (environment === development) {
     // For playing around with just frontend code the serve plugin is pretty nice.
     // We removed it when we started doing actual backend work.
     plugins.push(serve({
@@ -36,11 +36,11 @@ if (nodeEnvironment === development) {
     plugins.push(livereload());
 }
 
-if (nodeEnvironment === production) {
+if (environment === production) {
     plugins.push(uglify());
 }
 
-const sourceMap = nodeEnvironment === development ? 'inline' : false;
+const sourceMap = environment === development ? 'inline' : false;
 
 export default {
     plugins: plugins,
@@ -49,12 +49,6 @@ export default {
         file: './build/bundle.js',
         format: 'iife',
         sourcemap: sourceMap,
+        treeshake: false
     }
 };
-
-function parseNodeEnv(nodeEnv) {
-    if (nodeEnv === production || nodeEnv === development) {
-        return nodeEnv;
-    }
-    return development;
-}
