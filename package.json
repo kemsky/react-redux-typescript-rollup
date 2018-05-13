@@ -2,7 +2,14 @@
   "name": "react-redux-typescript-rollup",
   "version": "1.0.0",
   "description": "React & Redux & Typescript & Rollup",
+  "repository": "N/A",
   "license": "MIT",
+  "engineStrict": true,
+  "engines": {
+    "yarn": "1.5.1",
+    "node": "9.1.0",
+    "npm": "5.5.1"
+  },
   "scripts": {
     "prebuild": "yarn run lint",
     "build": "cross-env NODE_ENV=production rollup -c",
