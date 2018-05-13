@@ -7,8 +7,7 @@ export class Application extends React.Component<object, object>
 {
     public onClick(event: React.MouseEvent<HTMLDivElement>): void
     {
-        //store.dispatch(new SimpleAction1(42));
-        store.dispatch({type: SimpleAction1.Type, payload: 42});
+        store.dispatch(SimpleAction1.create(42));
     }
 
     public render()

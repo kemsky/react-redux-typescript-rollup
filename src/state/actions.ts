@@ -1,28 +1,34 @@
 import { Action } from 'redux';
 
-export class SimpleAction1 implements Action
+export abstract class SimpleAction1 implements Action
 {
     public static readonly Type = 'SimpleAction1';
 
     public readonly type = SimpleAction1.Type;
-    public readonly payload:number;
+    public readonly payload: number;
 
-    constructor(payload: number)
+    public static create(payload: number): SimpleAction1
     {
-        this.payload = payload;
+        return {
+            type   : SimpleAction1.Type,
+            payload: payload
+        };
     }
 }
 
-export class SimpleAction2 implements Action
+export abstract class SimpleAction2 implements Action
 {
     public static readonly Type = 'SimpleAction2';
 
     public readonly type = SimpleAction2.Type;
-    public readonly payload:boolean;
+    public readonly payload: boolean;
 
-    constructor(payload: boolean)
+    public static create(payload: boolean): SimpleAction2
     {
-        this.payload = payload;
+        return {
+            type   : SimpleAction2.Type,
+            payload: payload
+        };
     }
 }
 
