@@ -1,15 +1,14 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
+import { App } from './components/App';
 
-interface IHelloProps
-{
-    compiler: string;
-    framework: string;
-}
-
-const Hello = (props: IHelloProps) => (<h1>Hello from {props.compiler} and {props.framework}! And me!</h1>);
+const store = createStore((state, action) => state, {});
 
 ReactDOM.render(
-    <Hello compiler='typescript' framework='react'/>,
+    (<Provider store={store}>
+        <App/>
+    </Provider>),
     document.getElementById('app')
 );
