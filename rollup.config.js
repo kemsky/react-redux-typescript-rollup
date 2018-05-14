@@ -23,7 +23,7 @@ const plugins = [
             './node_modules/react-dom/index.js': ['render']
         }
     }),
-    typescriptPlugin({typescript}), //transpiler only, no error checking
+    typescriptPlugin({typescript}), //transpile only, no error checking
     cleanup({})
 ];
 
