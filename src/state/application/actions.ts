@@ -1,38 +1,20 @@
-import { Action } from 'redux';
-
 export enum ApplicationActions
 {
     SimpleAction1 = 'SimpleAction1',
     SimpleAction2 = 'SimpleAction2',
 }
 
+export const SimpleAction2 = 'SimpleAction2';
 
-export abstract class SimpleAction1 implements Action
-{
-    public readonly type = ApplicationActions.SimpleAction1;
-    public readonly payload: number;
+export const simpleAction1 = (payload: number) => ({
+    type   : ApplicationActions.SimpleAction1 as typeof ApplicationActions.SimpleAction1,
+    payload: payload
+});
 
-    public static create(payload: number): SimpleAction1
-    {
-        return {
-            type   : ApplicationActions.SimpleAction1,
-            payload: payload
-        };
-    }
-}
+export const simpleAction2 = (payload: string) => ({
+    type   : ApplicationActions.SimpleAction2 as typeof ApplicationActions.SimpleAction2,
+    payload: payload
+});
 
-export abstract class SimpleAction2 implements Action
-{
-    public readonly type = ApplicationActions.SimpleAction2;
-    public readonly payload: boolean;
 
-    public static create(payload: boolean): SimpleAction2
-    {
-        return {
-            type   : ApplicationActions.SimpleAction2,
-            payload: payload
-        };
-    }
-}
-
-export type ApplicationActionType = SimpleAction1 | SimpleAction2;
+export type ApplicationActionType = ReturnType<typeof simpleAction1> | ReturnType<typeof simpleAction2>;

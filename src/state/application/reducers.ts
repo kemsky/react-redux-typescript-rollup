@@ -6,9 +6,11 @@ export const ApplicationReducer = (state: IState, action: RootAction) =>
     switch(action.type)
     {
         case ApplicationActions.SimpleAction1:
+            action.payload = 0;
             console.info(action.type, action.payload);
             return state;
         case ApplicationActions.SimpleAction2:
+            action.payload = '';
             console.info(action.type, action.payload);
             return state;
         default:

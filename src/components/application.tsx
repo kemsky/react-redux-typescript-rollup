@@ -1,13 +1,13 @@
 import * as React from 'react';
 import { ConnectedChild } from './child';
-import { store } from '../state';
-import { SimpleAction1 } from '../state/application/actions';
+import { simpleAction1 } from '../state/application/actions';
+import { store } from '../state/state';
 
 export class Application extends React.Component<object, object>
 {
     public onClick(event: React.MouseEvent<HTMLDivElement>): void
     {
-        store.dispatch(SimpleAction1.create(42));
+        store.dispatch(simpleAction1(42));
     }
 
     public render()
