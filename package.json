@@ -4,7 +4,7 @@
   "description": "React & Redux & Typescript & Rollup",
   "repository": "N/A",
   "license": "MIT",
-  "engineStrict": true,
+  "engineStrict": false,
   "engines": {
     "yarn": "1.5.1",
     "node": "9.1.0",
