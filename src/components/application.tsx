@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ConnectedChild } from './child';
 import { store } from '../state';
-import { SimpleAction1 } from '../state/actions';
+import { SimpleAction1 } from '../state/application/actions';
 
 export class Application extends React.Component<object, object>
 {
