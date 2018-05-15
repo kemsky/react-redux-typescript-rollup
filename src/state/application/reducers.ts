@@ -5,11 +5,11 @@ export const ApplicationReducer = (state: IState, action: RootAction) =>
 {
     switch(action.type)
     {
-        case ApplicationActions.SimpleAction1:
+        case ApplicationActions.Action1:
             action.payload = 0;
             console.info(action.type, action.payload);
             return state;
-        case ApplicationActions.SimpleAction2:
+        case ApplicationActions.Action2:
             action.payload = '';
             console.info(action.type, action.payload);
             return state;

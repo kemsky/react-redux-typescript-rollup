@@ -1,13 +1,13 @@
-import { actionCreator } from '../actions.common';
+import { actionCreatorFactory } from '../actions.common';
 
 export enum ApplicationActions
 {
-    SimpleAction1 = 'SimpleAction1',
-    SimpleAction2 = 'SimpleAction2'
+    Action1 = 'Action1',
+    Action2 = 'Action2'
 }
 
-export const simpleAction1 = actionCreator<ApplicationActions.SimpleAction1, number>(ApplicationActions.SimpleAction1);
+export const createAction1 = actionCreatorFactory<ApplicationActions.Action1, number>(ApplicationActions.Action1);
 
-export const simpleAction2 = actionCreator<ApplicationActions.SimpleAction2, string>(ApplicationActions.SimpleAction2);
+export const createAction2 = actionCreatorFactory<ApplicationActions.Action2, string>(ApplicationActions.Action2);
 
-export type ApplicationActionType = ReturnType<typeof simpleAction1> | ReturnType<typeof simpleAction2>;
+export type ApplicationActionType = ReturnType<typeof createAction1> | ReturnType<typeof createAction2>;
