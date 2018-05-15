@@ -10,8 +10,7 @@ export const ApplicationReducer = (state: IState, action: RootAction) =>
             console.info(action.type, action.payload);
             return state;
         case ApplicationActions.Action2:
-            action.payload = '';
-            console.info(action.type, action.payload);
+            console.info(action.type, action.payload.count, action.payload.index);
             return state;
         default:
             return state;

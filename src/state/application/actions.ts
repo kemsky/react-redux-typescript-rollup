@@ -8,6 +8,6 @@ export enum ApplicationActions
 
 export const createAction1 = actionCreatorFactory<ApplicationActions.Action1, number>(ApplicationActions.Action1);
 
-export const createAction2 = actionCreatorFactory<ApplicationActions.Action2, string>(ApplicationActions.Action2);
+export const createAction2 = actionCreatorFactory<ApplicationActions.Action2, {index:number, count:number}>(ApplicationActions.Action2);
 
 export type ApplicationActionType = ReturnType<typeof createAction1> | ReturnType<typeof createAction2>;

@@ -7,5 +7,15 @@ export function actionCreatorFactory<T>(type: T): ActionFn<T>;
 export function actionCreatorFactory<T, P>(type: T): ActionPayloadFn<T, P>;
 export function actionCreatorFactory<T, P>(type: T): ActionFn<T> | ActionPayloadFn<T, P>
 {
-    return (payload?: P) => typeof payload === 'undefined' ? {type: type} : {type: type, payload: payload};
+    return (payload?: any) =>
+    {
+        if (typeof payload === 'undefined')
+        {
+            return {type: type};
+        }
+        else
+        {
+            return {type: type, payload: payload};
+        }
+    };
 }
