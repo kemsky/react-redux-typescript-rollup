@@ -1,13 +1,25 @@
-export type ActionFn<T> = () => { type: T };
-export type ActionPayloadFn<T, P> = (payload: P) => { type: T, payload: P };
+export interface IActionCreatorWithType<T extends string> extends Function
+{
+    Name: T;
+}
+
+export interface IActionFn<T extends string> extends IActionCreatorWithType<T>
+{
+    (): { type: T };
+}
+
+export interface IActionPayloadFn<T extends string, P> extends IActionCreatorWithType<T>
+{
+    (payload: P): { type: T, payload: P };
+}
 
 // noinspection JSUnusedLocalSymbols
-export function actionFactory<T>(type: T): ActionFn<T>;
+export function actionFactory<T extends string>(type: T): IActionFn<T>;
 // noinspection JSUnusedLocalSymbols
-export function actionFactory<T, P>(type: T): ActionPayloadFn<T, P>;
-export function actionFactory<T, P>(type: T): ActionFn<T> | ActionPayloadFn<T, P>
+export function actionFactory<T extends string, P>(type: T): IActionPayloadFn<T, P>;
+export function actionFactory<T extends string, P>(type: T)
 {
-    return (payload?: any) =>
+    return Object.assign(function actionCreator(payload?: P)
     {
         if (typeof payload === 'undefined')
         {
@@ -17,7 +29,7 @@ export function actionFactory<T, P>(type: T): ActionFn<T> | ActionPayloadFn<T, P
         {
             return {type: type, payload: payload};
         }
-    };
+    }, {Name: type} as { Name: T });
 }
 
 export type Fn = (...args: any[]) => any;
