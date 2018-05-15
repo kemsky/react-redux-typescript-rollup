@@ -1,3 +1,3 @@
-import { ApplicationActionType } from './application/actions';
+import { ApplicationActions } from './application/actions';
 
-export type RootAction = ApplicationActionType;
+export type RootAction = ApplicationActions;
