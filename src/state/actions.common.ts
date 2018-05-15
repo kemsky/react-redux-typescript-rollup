@@ -1,14 +1,14 @@
-export interface IActionCreatorWithType<T extends string> extends Function
+export interface IActionCreatorWithTypeFn<T extends string>
 {
     Type: T;
 }
 
-export interface IActionFn<T extends string> extends IActionCreatorWithType<T>
+export interface IActionFn<T extends string> extends IActionCreatorWithTypeFn<T>
 {
     (): { type: T };
 }
 
-export interface IActionPayloadFn<T extends string, P> extends IActionCreatorWithType<T>
+export interface IActionWithPayloadFn<T extends string, P> extends IActionCreatorWithTypeFn<T>
 {
     (payload: P): { type: T, payload: P };
 }
@@ -16,7 +16,7 @@ export interface IActionPayloadFn<T extends string, P> extends IActionCreatorWit
 // noinspection JSUnusedLocalSymbols
 export function actionFactory<T extends string>(type: T): IActionFn<T>;
 // noinspection JSUnusedLocalSymbols
-export function actionFactory<T extends string, P>(type: T): IActionPayloadFn<T, P>;
+export function actionFactory<T extends string, P>(type: T): IActionWithPayloadFn<T, P>;
 export function actionFactory<T extends string, P>(type: T)
 {
     return Object.assign(function actionCreator(payload?: P)
