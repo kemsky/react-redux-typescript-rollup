@@ -12,6 +12,9 @@ export const ApplicationReducer = (state: IState, action: RootAction) =>
         case ApplicationActions.createAction2.Type:
             console.info(action.type, action.payload.count, action.payload.index);
             return state;
+        case ApplicationActions.createAction4.Type:
+            console.info(action.type, action.payload);
+            return state;
         default:
             return state;
     }
