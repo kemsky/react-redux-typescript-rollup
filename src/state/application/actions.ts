@@ -1,17 +1,10 @@
 import { actionFactory, ActionUnionType } from '../actions.common';
 
-const enum ApplicationActionNames
-{
-    Action1 = 'Action1',
-    Action2 = 'Action2',
-    Action3 = 'Action3',
-}
+const createAction1 = actionFactory<'Action1', number>('Action1');
 
-const createAction1 = actionFactory<ApplicationActionNames.Action1, number>(ApplicationActionNames.Action1);
+const createAction2 = actionFactory<'Action2', { index: number, count: number }>('Action2');
 
-const createAction2 = actionFactory<ApplicationActionNames.Action2, { index: number, count: number }>(ApplicationActionNames.Action2);
-
-const createAction3 = actionFactory<ApplicationActionNames.Action3>(ApplicationActionNames.Action3);
+const createAction3 = actionFactory<'Action3'>('Action3');
 
 export const ApplicationActions = {createAction1, createAction2, createAction3};
 

@@ -1,6 +1,6 @@
 export interface IActionCreatorWithType<T extends string> extends Function
 {
-    Name: T;
+    Type: T;
 }
 
 export interface IActionFn<T extends string> extends IActionCreatorWithType<T>
@@ -29,7 +29,7 @@ export function actionFactory<T extends string, P>(type: T)
         {
             return {type: type, payload: payload};
         }
-    }, {Name: type} as { Name: T });
+    }, {Type: type});
 }
 
 export type Fn = (...args: any[]) => any;
