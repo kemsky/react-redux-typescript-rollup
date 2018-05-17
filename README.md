@@ -1,26 +1,26 @@
 # react-redux-typescript-rollup
-Sample project using react, redux, typescript, jasmine and rollup
+Sample project using React, React-Redux, TypeScript, TSLint, Jasmine and Rollup.
 
 ## Install packages
 
-```shell
+```bat
 yarn
 ```
 
 ## Start dev-mode with hot reloading
 
-```shell
+```bat
 yarn start
 ```
 
 ## Build release bundle 
 
-```shell
+```bat
 yarn build
 ```
 
 ## Run Jasmine tests
 
-```shell
+```bat
 yarn test
 ```
