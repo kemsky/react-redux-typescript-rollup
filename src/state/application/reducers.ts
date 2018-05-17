@@ -1,18 +1,18 @@
-import { ApplicationActions } from './actions';
+import { ApplicationActionTypes } from './actions';
 import { RootAction } from '../actions';
 
 export const ApplicationReducer = (state: IState, action: RootAction) =>
 {
     switch(action.type)
     {
-        case ApplicationActions.createAction1.Type:
+        case ApplicationActionTypes.Action1:
             action.payload = 0;
             console.info(action.type, action.payload);
             return state;
-        case ApplicationActions.createAction2.Type:
+        case ApplicationActionTypes.Action2:
             console.info(action.type, action.payload.count, action.payload.index);
             return state;
-        case ApplicationActions.createAction4.Type:
+        case ApplicationActionTypes.Action4:
             console.info(action.type, action.payload);
             return state;
         default:

@@ -1,6 +1,5 @@
-import { actionFactory } from '../actions.common';
-import { Dispatch } from 'react-redux';
-import { AnyAction } from 'redux';
+import { actionFactory, ActionWithPayload } from '../actions.common';
+import { Action } from 'redux';
 
 export enum ApplicationActionTypes
 {
@@ -10,20 +9,17 @@ export enum ApplicationActionTypes
     Action4 = 'Action4',
 }
 
-const createAction1 = actionFactory<ApplicationActionTypes.Action1, number>(ApplicationActionTypes.Action1);
+export type Action1 = ActionWithPayload<ApplicationActionTypes.Action1, number>;
+export type Action2 = ActionWithPayload<ApplicationActionTypes.Action2, { index: number, count: number }>;
+export type Action3 = Action<ApplicationActionTypes.Action3>;
+export type Action4 = ActionWithPayload<ApplicationActionTypes.Action4, string>;
 
-const createAction2 = actionFactory<ApplicationActionTypes.Action2, { index: number, count: number }>(ApplicationActionTypes.Action2);
+const createAction1 = actionFactory<Action1>(ApplicationActionTypes.Action1);
 
-const createAction3 = actionFactory<ApplicationActionTypes.Action3>(ApplicationActionTypes.Action3);
+const createAction2 = actionFactory<Action2>(ApplicationActionTypes.Action2);
 
-const createAction4 = actionFactory<ApplicationActionTypes.Action4, string>(ApplicationActionTypes.Action4);
+const createAction3 = actionFactory<Action3>(ApplicationActionTypes.Action3);
+
+const createAction4 = actionFactory<Action4>(ApplicationActionTypes.Action4);
 
 export const ApplicationActions = {createAction1, createAction2, createAction3, createAction4};
-
-export const thunkAction = (location: string) =>
-{
-    return (dispatch: Dispatch<AnyAction>) =>
-    {
-        dispatch(ApplicationActions.createAction4(location));
-    };
-};

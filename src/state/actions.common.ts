@@ -1,25 +1,23 @@
-export interface IActionCreatorWithTypeFn<T extends string>
-{
-    Type: T;
-}
+import { Action } from 'redux';
 
-export interface IActionFn<T extends string> extends IActionCreatorWithTypeFn<T>
+/* tslint:disable */
+export interface ActionWithPayload<T, P> extends Action<T>
 {
-    (): { type: T };
+    payload: P;
 }
+/* tslint:enable */
 
-export interface IActionWithPayloadFn<T extends string, P> extends IActionCreatorWithTypeFn<T>
-{
-    (payload: P): { type: T, payload: P };
-}
+type ExtractType<T> = T extends Action<infer A> ? A : never;
+type ExtractPayload<T> = T extends ActionWithPayload<infer A, infer B> ? B : never;
 
-// noinspection JSUnusedLocalSymbols
-export function actionFactory<T extends string>(type: T): IActionFn<T>;
-// noinspection JSUnusedLocalSymbols
-export function actionFactory<T extends string, P>(type: T): IActionWithPayloadFn<T, P>;
-export function actionFactory<T extends string, P>(type: T)
+type ActionFactory<T> = () => Action<ExtractType<T>>;
+type ActionWithPayloadFactory<T> = (payload: ExtractPayload<T>) => ActionWithPayload<ExtractType<T>, ExtractPayload<T>>;
+
+export function actionFactory<T extends ActionWithPayload<any, any>>(type: ExtractType<T>): ActionWithPayloadFactory<T>;
+export function actionFactory<T extends Action<any>>(type: ExtractType<T>): ActionFactory<T>;
+export function actionFactory<T extends Action<T>>(type: ExtractType<T>)
 {
-    return Object.assign(function actionCreator(payload?: P)
+    return (payload?: any) =>
     {
         if (typeof payload === 'undefined')
         {
@@ -29,7 +27,7 @@ export function actionFactory<T extends string, P>(type: T)
         {
             return {type: type, payload: payload};
         }
-    }, {Type: type});
+    };
 }
 
 export type Fn = (...args: any[]) => any;
