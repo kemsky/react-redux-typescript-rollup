@@ -1,10 +1,18 @@
 # react-redux-typescript-rollup
 Sample project using react, redux, typescript, jasmine and rollup
 
-```yarn```
+```shell
+yarn
+```
 
-```yarn start```
+```shell
+yarn start
+```
 
-```yarn build```
+```shell
+yarn build
+```
 
-```yarn test```
+```shell
+yarn test
+```
