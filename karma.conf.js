@@ -1,4 +1,5 @@
 module.exports = function (config) {
+    // noinspection JSUnusedGlobalSymbols
     config.set({
         files: [
             {pattern: 'src/**/*.spec.ts', watched: false}
@@ -76,7 +77,7 @@ module.exports = function (config) {
         },
 
         htmlReporter: {
-            outputDir: './temp/reports',
+            outputDir: './output/reports',
             templatePath: null,
             focusOnFailures: true,
             namedFiles: false,

@@ -1,5 +1,5 @@
 .idea
 node_modules/
 build/
-temp/
+output
 yarn-error.log

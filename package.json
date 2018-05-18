@@ -19,10 +19,10 @@
     "test": "karma start karma.conf.js --log-level error --single-run",
     "lint": "tslint --project tsconfig.json",
     "pretsc": "yarn run clean:tsc",
-    "tsc": "tsc --p tsconfig.json -outDir ./temp/tsc",
+    "tsc": "tsc --p tsconfig.json -outDir ./output/tsc",
     "clean:build": "shx rm -rf ./build",
-    "clean:tsc": "shx rm -rf ./temp/tsc",
-    "clean:test": "shx rm -rf ./temp/reports"
+    "clean:tsc": "shx rm -rf ./output/tsc",
+    "clean:test": "shx rm -rf ./output/reports"
   },
   "author": "Alexander Turtsevich",
   "dependencies": {
