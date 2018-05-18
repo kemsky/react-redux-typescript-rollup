@@ -17,7 +17,8 @@ module.exports = function (config) {
             plugins: [
                 require('rollup-plugin-node-resolve')({
                     jsnext: true,
-                    module: true
+                    module: true,
+                    browser: true //required for axios library
                 }),
                 require('rollup-plugin-commonjs')({
                     include: 'node_modules/**',

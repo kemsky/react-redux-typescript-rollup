@@ -17,7 +17,8 @@ const plugins = [
     }),
     nodeResolve({
         jsnext: true,
-        module: true
+        module: true,
+        browser: true  //required for axios library
     }),
     commonjs({
         include: 'node_modules/**',

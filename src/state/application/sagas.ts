@@ -1,10 +1,13 @@
-import { takeLatest } from 'redux-saga/effects';
-import { ApplicationActionTypes } from './actions';
+import { call, takeLatest } from 'redux-saga/effects';
+import { ApplicationActions, ApplicationActionTypes } from './actions';
+import axios from 'axios';
+import { store } from '../state';
 
 export function* Saga1()
 {
-    console.log('saga works');
-    yield 0;
+    const result = yield call(() => axios.get('https://jsonplaceholder.typicode.com/posts/1'));
+
+    store.dispatch(ApplicationActions.createAction4(JSON.stringify(result)));
 }
 
 
