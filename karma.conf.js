@@ -9,7 +9,7 @@ module.exports = function (config) {
         frameworks: ['jasmine'],
 
         preprocessors: {
-            'src/**/*.ts*': ['rollup', 'coverage'],
+            'src/**/*.ts*': ['rollup'],
         },
 
         browsers: ['PhantomJS'],
@@ -26,7 +26,6 @@ module.exports = function (config) {
         //using spec console reporter, coverage reporter and jasmine html reporter:
         reporters: [
             'spec',
-            'coverage',
             'html'
         ],
 
@@ -39,7 +38,6 @@ module.exports = function (config) {
 
         plugins: [
             'karma-jasmine',
-            'karma-coverage',
             'karma-chrome-launcher',
             'karma-phantomjs-launcher',
             'karma-html-reporter',
@@ -47,14 +45,6 @@ module.exports = function (config) {
             'karma-teamcity-reporter',
             'karma-rollup-preprocessor'
         ],
-
-        coverageReporter: {
-            dir: './temp/coverage',
-            reporters: [
-                {type: 'json', subdir: '.', file: 'coverage.json'},
-                {type: 'html', dir: './temp/coverage'}
-            ]
-        },
 
         //karma-spec-reporter options:
         specReporter: {
