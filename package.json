@@ -12,12 +12,12 @@
     "npm": "5.5.1"
   },
   "scripts": {
-    "prebuild": "yarn run clean && yarn run tsc && yarn run clean && yarn run lint && yarn test",
+    "prebuild": "yarn run clean && yarn run tsc && yarn run lint && yarn test",
     "build": "cross-env NODE_ENV=production rollup -c",
     "start": "cross-env NODE_ENV=development rollup -cw",
     "test": "karma start karma.conf.js --log-level error --single-run",
     "lint": "tslint --project tsconfig.json",
-    "tsc": "tsc --p tsconfig.json -outDir ./temp",
+    "tsc": "tsc --p tsconfig.json -outDir ./temp/tsc",
     "clean": "shx rm -rf ./temp && shx rm -rf ./build"
   },
   "author": "Alexander Turtsevich",
