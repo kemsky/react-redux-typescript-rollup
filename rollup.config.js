@@ -11,7 +11,10 @@ import cleanup from 'rollup-plugin-cleanup';
 const production = process.env.NODE_ENV === 'production';
 
 const plugins = [
-    replace({'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development')}),
+    replace({
+        'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
+        enableDevTools: true
+    }),
     nodeResolve({
         jsnext: true,
         module: true
@@ -20,7 +23,8 @@ const plugins = [
         include: 'node_modules/**',
         namedExports: {
             './node_modules/react/index.js': ['Children', 'Component', 'PropTypes', 'createElement'],
-            './node_modules/react-dom/index.js': ['render']
+            './node_modules/react-dom/index.js': ['render'],
+            './node_modules/redux/dist/index.js':['GenericStoreEnhancer']
         }
     }),
     typescriptPlugin({typescript}), //transpile only, no error checking
