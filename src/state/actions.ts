@@ -1,4 +1,4 @@
 import { ApplicationActions } from './application/actions';
-import { ActionUnionType } from './actions.common';
+import { ActionUnionType } from './common/actions';
 
 export type RootAction = ActionUnionType<typeof ApplicationActions>;

@@ -1,5 +1,5 @@
-import { actionFactory, ActionWithPayload } from '../actions.common';
 import { Action } from 'redux';
+import { actionFactory, ActionWithPayload } from '../common/actions';
 
 export enum ApplicationActionTypes
 {
