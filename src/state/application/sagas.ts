@@ -1,13 +1,15 @@
-import { call, takeLatest } from 'redux-saga/effects';
+import { put, takeLatest } from 'redux-saga/effects';
 import { ApplicationActions, ApplicationActionTypes } from './actions';
 import axios from 'axios';
-import { store } from '../state';
+import { promise } from '../common/sagas';
+import { Dispatch } from 'react-redux';
 
-export function* Saga1()
+export function* Saga1(this:{dispatch: Dispatch})
 {
-    const result = yield call(() => axios.get('https://jsonplaceholder.typicode.com/posts/1'));
+    //todo: no typing here, see https://github.com/Microsoft/TypeScript/issues/2983
+    const result = yield promise(() => axios.get<{data:{userId:number, id:number, title:string, body:string}}>('https://jsonplaceholder.typicode.com/posts/1'));
 
-    store.dispatch(ApplicationActions.createAction4(JSON.stringify(result)));
+    yield put(ApplicationActions.createAction4(JSON.stringify(result.data)));
 }
 
 
