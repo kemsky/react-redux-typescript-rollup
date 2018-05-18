@@ -49,5 +49,11 @@ export default {
         file: './build/bundle.js',
         format: 'iife',
         sourcemap: production ? true : 'inline'
+    },
+    onwarn: function(message){
+        if(message.code === 'CIRCULAR_DEPENDENCY' && message.importer.indexOf('redux-saga') > -1) {
+            return;
+        }
+        console.log(message);
     }
 };

@@ -12,13 +12,13 @@
     "npm": "5.5.1"
   },
   "scripts": {
-    "prebuild": "yarn run tsc && yarn run lint && yarn test && yarn run clean:build",
+    "prebuild": "yarn tsc && yarn lint && yarn test && yarn clean:build",
     "build": "cross-env NODE_ENV=production rollup -c",
     "start": "cross-env NODE_ENV=development rollup -cw",
     "pretest": "yarn run clean:test",
     "test": "karma start karma.conf.js --log-level error --single-run",
     "lint": "tslint --project tsconfig.json",
-    "pretsc": "yarn run clean:tsc",
+    "pretsc": "yarn clean:tsc",
     "tsc": "tsc --p tsconfig.json -outDir ./output/tsc",
     "clean:build": "shx rm -rf ./build",
     "clean:tsc": "shx rm -rf ./output/tsc",
