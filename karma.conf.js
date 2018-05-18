@@ -1,5 +1,3 @@
-//todo: rollup configuration
-
 module.exports = function (config) {
     config.set({
         files: [
@@ -15,11 +13,33 @@ module.exports = function (config) {
         browsers: ['PhantomJS'],
 
         rollupPreprocessor: {
-            plugins: [require('rollup-plugin-typescript')({typescript: require('typescript')})],
+            plugins: [
+                require('rollup-plugin-node-resolve')({
+                    jsnext: true,
+                    module: true
+                }),
+                require('rollup-plugin-commonjs')({
+                    include: 'node_modules/**',
+                    namedExports: {
+                        './node_modules/react/index.js': ['Children', 'Component', 'PropTypes', 'createElement'],
+                        './node_modules/react-dom/index.js': ['render'],
+                        './node_modules/chai/index.js': ['expect']
+                    }
+                }),
+                require('rollup-plugin-typescript')({
+                    typescript: require('typescript')
+                })
+            ],
             output: {
                 format: 'iife',
                 name: 'test',
                 sourcemap: 'inline'
+            },
+            onwarn: function(message) {
+                if(message.code === 'CIRCULAR_DEPENDENCY' && message.importer.indexOf('chai.js') > -1) {
+                    return;
+                }
+                console.log(message);
             }
         },
 
